@@ -1,0 +1,6 @@
+{
+  "name": "PasteCrop - Quick Image Editor & Clipboard Studio",
+  "description": "Fast clipboard-friendly image editor to paste, crop, rotate, annotate, filter, redact, and easily save or copy images back to clipboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
