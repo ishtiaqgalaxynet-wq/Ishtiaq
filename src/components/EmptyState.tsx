@@ -8,7 +8,6 @@ import {
   ShieldAlert, 
   Sparkles,
   Sliders,
-  Layers,
   Crown
 } from 'lucide-react';
 
@@ -30,94 +29,87 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
   };
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-10 flex flex-col items-center justify-center bg-[#0e0e11]">
-      <div className="w-full max-w-2xl space-y-7 animate-fade-in my-auto">
-        
-        {/* Main Minimalist Dropzone in Sleek Matte Charcoal */}
-        <div 
-          onClick={() => fileInputRef.current?.click()}
-          className="relative rounded-3xl border border-white/[0.08] bg-[#141418] p-8 sm:p-12 text-center space-y-6 hover:border-white/[0.16] hover:bg-[#17171c] transition-all cursor-pointer group shadow-2xl shadow-black/80"
-        >
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            multiple
-            className="hidden"
-            onChange={handleFileInputChange}
-          />
+    <div className="flex-1 flex flex-col items-center justify-center p-6 text-center select-none overflow-y-auto">
+      <input
+        ref={fileInputRef}
+        type="file"
+        accept="image/*"
+        multiple
+        className="hidden"
+        onChange={handleFileInputChange}
+      />
 
-          {/* Minimalist Ambient Matte Icon */}
-          <div className="w-16 h-16 rounded-2xl bg-[#1f1f26] border border-white/[0.1] text-zinc-100 mx-auto flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200">
-            <ClipboardCopy className="w-7 h-7 text-zinc-200" />
+      <div className="max-w-xl w-full space-y-6">
+        {/* Main dropzone / paste card */}
+        <div 
+          onClick={onPasteFromClipboard}
+          className="group relative cursor-pointer rounded-2xl border-2 border-dashed border-zinc-700 hover:border-zinc-500 bg-[#141418]/60 hover:bg-[#18181f]/80 p-10 transition-all duration-200 flex flex-col items-center justify-center gap-4"
+        >
+          <div className="w-16 h-16 rounded-2xl bg-[#1c1c22] border border-white/[0.08] flex items-center justify-center text-zinc-300 group-hover:text-white group-hover:scale-105 group-hover:border-white/[0.2] transition-all shadow-md">
+            <ClipboardCopy className="w-8 h-8" />
           </div>
 
-          <div className="space-y-2 max-w-md mx-auto">
-            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-              Paste or Drop Your Photos
-            </h1>
-            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-              Press <kbd className="px-2 py-0.5 rounded bg-[#22222a] border border-white/[0.12] font-mono text-[11px] text-zinc-200 font-semibold shadow-xs">Ctrl + V</kbd> or <kbd className="px-2 py-0.5 rounded bg-[#22222a] border border-white/[0.12] font-mono text-[11px] text-zinc-200 font-semibold shadow-xs">⌘V</kbd> anywhere to paste a screenshot directly from your clipboard.
+          <div className="space-y-1.5">
+            <h3 className="text-lg font-semibold text-white tracking-tight">
+              Click to Paste or Press <kbd className="px-2 py-0.5 text-xs bg-zinc-800 border border-zinc-700 rounded-md font-mono text-zinc-300">Ctrl+V</kbd> / <kbd className="px-2 py-0.5 text-xs bg-zinc-800 border border-zinc-700 rounded-md font-mono text-zinc-300">⌘V</kbd>
+            </h3>
+            <p className="text-sm text-zinc-400">
+              or browse image files from your computer
             </p>
           </div>
 
-          {/* Friendly Primary Action Buttons */}
-          <div className="flex flex-wrap items-center justify-center gap-3 pt-1" onClick={(e) => e.stopPropagation()}>
+          <div className="pt-2 flex items-center gap-3">
             <button
-              onClick={onPasteFromClipboard}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-zinc-100 hover:bg-white text-zinc-950 font-semibold text-xs shadow-lg shadow-black/50 transition-all active:scale-[0.98]"
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                fileInputRef.current?.click();
+              }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white text-xs font-medium border border-zinc-700 transition-colors"
             >
-              <ClipboardCopy className="w-4 h-4 text-zinc-950" />
-              <span>Paste from Clipboard</span>
-            </button>
-
-            <button
-              onClick={() => fileInputRef.current?.click()}
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/[0.1] bg-[#1e1e24] hover:bg-[#26262e] text-zinc-200 font-medium text-xs transition-all active:scale-[0.98]"
-            >
-              <Upload className="w-4 h-4 text-zinc-400" />
-              <span>Choose Photo (1, 2, or 3)</span>
+              <Upload className="w-3.5 h-3.5" />
+              <span>Select Images</span>
             </button>
           </div>
 
-          <div className="text-[11px] text-zinc-400 font-mono pt-1">
-            PNG · JPEG · WEBP · Clipboard Screenshots · Select 2 or 3 to Merge
+          <div className="text-xs text-zinc-500 font-mono pt-2">
+            PNG · JPEG · WEBP · Clipboard Screenshots · Select multiple to Merge
           </div>
         </div>
 
-        {/* User-friendly feature guide cards in matte charcoal */}
+        {/* Feature guide badges */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs text-zinc-400">
           <div className="p-3 rounded-xl bg-[#141418] border border-white/[0.06] flex items-center gap-2.5">
-            <Crop className="w-4 h-4 text-zinc-300 shrink-0" />
+            <Crop className="w-4 h-4 text-zinc-400 shrink-0" />
             <span>Fast Crop & Aspect Ratios</span>
           </div>
           <div className="p-3 rounded-xl bg-[#141418] border border-white/[0.06] flex items-center gap-2.5">
-            <RotateCw className="w-4 h-4 text-zinc-300 shrink-0" />
+            <RotateCw className="w-4 h-4 text-zinc-400 shrink-0" />
             <span>Turn, Flip & Level Angles</span>
           </div>
           <div className="p-3 rounded-xl bg-[#141418] border border-white/[0.06] flex items-center gap-2.5">
-            <Combine className="w-4 h-4 text-zinc-300 shrink-0" />
-            <span>Attach & Merge 2 or 3 Photos</span>
+            <Combine className="w-4 h-4 text-zinc-400 shrink-0" />
+            <span>Attach & Merge Photos</span>
           </div>
           <div className="p-3 rounded-xl bg-[#141418] border border-white/[0.06] flex items-center gap-2.5">
-            <ShieldAlert className="w-4 h-4 text-zinc-300 shrink-0" />
+            <ShieldAlert className="w-4 h-4 text-zinc-400 shrink-0" />
             <span>Censor & Pixelate Secrets</span>
           </div>
           <div className="p-3 rounded-xl bg-[#141418] border border-white/[0.06] flex items-center gap-2.5">
-            <Sliders className="w-4 h-4 text-zinc-300 shrink-0" />
-            <span>Light, Contrast & Auto Enhance</span>
+            <Sliders className="w-4 h-4 text-zinc-400 shrink-0" />
+            <span>Light & Contrast Adjust</span>
           </div>
           <div className="p-3 rounded-xl bg-[#141418] border border-white/[0.06] flex items-center gap-2.5">
-            <Sparkles className="w-4 h-4 text-zinc-300 shrink-0" />
-            <span>1-Click Copy back to Clipboard</span>
+            <Sparkles className="w-4 h-4 text-zinc-400 shrink-0" />
+            <span>1-Click Copy to Clipboard</span>
           </div>
         </div>
 
         {/* Owner Credit Banner */}
         <div className="pt-2 text-center">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#15151a] border border-white/[0.08] text-xs text-zinc-400 shadow-md">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#16161d] border border-white/[0.08] hover:border-amber-400/40 text-xs text-zinc-300 shadow-sm transition-colors group">
             <Crown className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-            <span>Owned & Created by <strong className="text-zinc-100 font-semibold">Ishtiaq Islam Himel</strong></span>
+            <span>Owned & Created by <strong className="text-white font-semibold">Ishtiaq Islam Himel</strong></span>
           </div>
         </div>
       </div>

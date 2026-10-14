@@ -66,14 +66,15 @@ export const TopBar: React.FC<TopBarProps> = ({
             PC
           </div>
           <div className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2">
-            <span className="text-sm font-bold tracking-tight text-white group-hover:text-zinc-200 transition-colors">
+            <span className="text-sm font-bold tracking-tight text-white group-hover:text-zinc-200 transition-colors flex items-center gap-1.5">
               PasteCrop
             </span>
             <div className="flex items-center gap-1.5">
               <span className="hidden md:inline-block w-1 h-1 rounded-full bg-zinc-600"></span>
-              <span className="text-[11px] text-zinc-400 font-medium flex items-center gap-1">
+              <span className="text-[11px] text-zinc-400 font-medium flex items-center gap-1 bg-white/[0.04] px-2 py-0.5 rounded-full border border-white/[0.06] hover:border-amber-400/30 transition-colors">
+                <span className="text-amber-400">👑</span>
                 <span className="hidden sm:inline text-zinc-500">Owner:</span>
-                <span className="text-zinc-300 font-semibold">Ishtiaq Islam Himel</span>
+                <span className="text-zinc-200 font-semibold">Ishtiaq Islam Himel</span>
               </span>
             </div>
           </div>

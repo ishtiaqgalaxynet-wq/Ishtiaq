@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="bg-grad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1c1c22" />
+      <stop offset="100%" stop-color="#0b0b0e" />
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="16" y1="16" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#a1a1aa" />
+    </linearGradient>
+    <linearGradient id="glow-grad" x1="20" y1="20" x2="44" y2="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#818cf8" stop-opacity="0.6" />
+    </linearGradient>
+    <filter id="subtle-shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.8" />
+    </filter>
+  </defs>
+
+  <!-- Charcoal Squircle Frame -->
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bg-grad)" stroke="#2e2e38" stroke-width="2" filter="url(#subtle-shadow)" />
+  
+  <!-- Subtle inner neon highlight ring -->
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1" />
+
+  <!-- Crop Guide Marks -->
+  <!-- Top Left Crop -->
+  <path d="M16 26 V18 C16 16.8954 16.8954 16 18 16 H26" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Bottom Right Crop -->
+  <path d="M48 38 V46 C48 47.1046 47.1046 48 46 48 H38" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Center Photo Frame / Sparkle -->
+  <rect x="22" y="22" width="20" height="20" rx="4" fill="#202028" stroke="url(#accent-grad)" stroke-width="2" />
+  
+  <!-- Glowing Center Shutter / Diamond -->
+  <circle cx="32" cy="32" r="5" fill="url(#glow-grad)" />
+  <circle cx="32" cy="32" r="2" fill="#ffffff" />
+
+  <!-- Micro Cut corner indicator in top right -->
+  <line x1="42" y1="16" x2="48" y2="16" stroke="#71717a" stroke-width="2" stroke-linecap="round" />
+  <line x1="48" y1="16" x2="48" y2="22" stroke="#71717a" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Micro Cut corner indicator in bottom left -->
+  <line x1="16" y1="42" x2="16" y2="48" stroke="#71717a" stroke-width="2" stroke-linecap="round" />
+  <line x1="16" y1="48" x2="22" y2="48" stroke="#71717a" stroke-width="2" stroke-linecap="round" />
+</svg>
